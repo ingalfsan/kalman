@@ -209,3 +209,51 @@ El mismo patrón es aplicable a:
 - Suavizado de lecturas de sensores IoT
 - Filtrado de telemetría ambiental
 - Suavizado de series de tiempo de negocio (ventas, demanda, etc.)
+
+---
+
+## Ejemplos reales del Filtro de Kalman
+
+### Navegación GPS
+
+El filtro de Kalman es el núcleo de los sistemas GPS. Combina la señal satelital (ruidosa por interferencias atmosféricas y multitrayectoria) con modelos de movimiento del vehículo para producir una posición suave y continua. Todos los smartphones, drones y vehículos autónomos lo usan en tiempo real.
+
+### Navegación en túneles (GPS-denied)
+
+Cuando un vehículo entra a un túnel y pierde señal GPS, el filtro de Kalman integra datos de la IMU (acelerómetro + giroscopio) y del odómetro para estimar la posición sin señal externa. Al salir del túnel, el filtro fusiona nuevamente con GPS corrigiendo la deriva acumulada.
+
+### Vuelo de aeronaves y misiles
+
+En aviación, el filtro de Kalman fusiona datos de giroscopios, acelerómetros, altímetros y GPS para estimar la actitud (roll, pitch, yaw) y posición del avión. Fue uno de los primeros usos del algoritmo, introducido en los años 60 durante el programa Apollo de la NASA.
+
+### Vehículos autónomos
+
+Los autos sin conductor combinan LIDAR, cámaras, radar y GPS. El filtro de Kalman (o su variante extendida, EKF) fusiona todas estas fuentes heterogéneas para mantener una estimación coherente del entorno y la posición del vehículo.
+
+### Robótica móvil (SLAM)
+
+En robots móviles, la técnica SLAM (Simultaneous Localization and Mapping) usa el filtro de Kalman para construir un mapa del entorno y localizar al robot dentro de él al mismo tiempo, corrigiendo errores de odometría con sensores externos.
+
+### Seguimiento de objetos en visión por computadora
+
+En video y cámaras de seguridad, el filtro de Kalman predice la posición de un objeto entre fotogramas, permitiendo rastrear personas, vehículos o pelotas incluso cuando la detección falla temporalmente (oclusión).
+
+### Finanzas y trading algorítmico
+
+Se aplica para estimar la tendencia subyacente de una serie de precios, filtrando el ruido de mercado. Permite detectar señales de compra/venta sin reaccionar a fluctuaciones aleatorias de corto plazo.
+
+### Medicina y señales biomédicas
+
+En electrocardiogramas (ECG) y electroencefalogramas (EEG), el filtro de Kalman elimina ruido eléctrico e interferencias musculares para obtener señales limpias que permitan diagnósticos más precisos.
+
+### Meteorología y predicción numérica
+
+Los modelos meteorológicos usan variantes del filtro de Kalman (como el EnKF, Ensemble Kalman Filter) para asimilar datos de estaciones, satélites y radiosondas, mejorando continuamente las predicciones del tiempo.
+
+### Monitoreo ambiental (como este ejemplo)
+
+La estimación de CO2 atmosférico en Mauna Loa es un caso directo: el filtro separa la tendencia real de largo plazo del ruido estacional e instrumental, produciendo una señal limpia y una tasa de cambio mensual estimada.
+
+---
+
+*Desarrollado por: Jose Alfredo Sanchez*
